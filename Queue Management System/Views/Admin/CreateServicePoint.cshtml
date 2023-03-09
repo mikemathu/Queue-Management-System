@@ -1,0 +1,29 @@
+﻿@model Queue_Management_System.Models.ServicePointVM
+
+@{
+    ViewData["Title"] = "Create Service Point";
+}
+
+<h1>Create Service Point</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="CreateServicePoint">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>         
+            <div class="form-group">
+                <label asp-for="ServiceProviderId" class="control-label"></label>
+                <input asp-for="ServiceProviderId" class="form-control" />
+                <span asp-validation-for="ServiceProviderId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <a asp-action="ViewServicePoints" class="btn btn-dark">Back to List</a> &nbsp;
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

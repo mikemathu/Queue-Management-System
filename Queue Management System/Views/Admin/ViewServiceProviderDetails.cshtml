@@ -1,0 +1,42 @@
+﻿@model Queue_Management_System.Models.ServiceProviderVM
+
+@{
+    ViewData["Title"] = "Service Provider Details";
+}
+
+<h1>Details of @Model.Name</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Password)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Password)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+    </dl>
+</div>
+<br />
+<div>
+    <a asp-action="ViewServiceProviders" class="btn btn-dark">Back to List</a>
+    <a asp-action="EditServiceProvider" class="btn btn-warning" asp-route-id="@Model.Id">Edit</a>
+</div>

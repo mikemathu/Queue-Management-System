@@ -1,0 +1,34 @@
+﻿@model QueueVMList
+
+<!-- Modal -->
+<div class="modal fade" id="transferNumberModal" tabindex="-1" aria-labelledby="transferNumberModal" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Transfer Current Serving Queue Id Number</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" asp-controller="Queue" asp-action="TransferNumber">
+                <div class="modal-body">               
+                    <div asp-validation-summary="ModelOnly" class="text-dander"></div>
+                    <div class="form-group">
+                        <lable asp-for="room">Tranfer to Room Number?</lable>
+                        @if (@Model.ServicePointCount == 0)
+                        {
+                            <input asp-for="MyCurrentServingCustomerDetails.ServicePointId" min="0" max="0" class="form-control">
+                        }
+                        else
+                        {
+                            <input asp-for="MyCurrentServingCustomerDetails.ServicePointId" min="1" max="@Model.ServicePointCount" class="form-control">
+                        }
+                        <span asp-validation-for="MyCurrentServingCustomerDetails.ServicePointId" class="text-danger"></span>
+                    </div>             
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit"  class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

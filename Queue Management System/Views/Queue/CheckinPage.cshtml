@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Queue_Management_System.Models.ServicePointVM>
+
+@{
+    ViewData["Title"] = "Checkin Page";
+}
+
+@if (@Model.Count() == 0)
+{
+    <H1 style="padding-top: 50px;" class="text-center">Sorry the System is under maintainance</H1>
+}
+else
+{
+    <div class="text-center row justify-content-center ">
+        <h1 class="">WELCOME TO OUR SERVICES</h1>
+        <h5>Pleace select the service</h5>
+        <div class="row justify-content-center" style="width: 50vw">
+            @foreach (var item in Model)
+            {       
+                <div class="col-6">
+                    <button style="width: 100%; padding:20px;  margin: 20px; 10px;" data-id="@item.Id" class="btn btn-primary allocateBtn" type="button"> @Html.DisplayFor(modelItem => item.Name) </button>
+                </div>
+            }
+        </div>
+    </div> 
+}
+
+<form id="allocationForm" asp-action="AddCustomerToQueue">
+    <input type="hidden" id="allocateQueueId" name="Id" />
+</form>
+
+@section Scripts{
+    <script>
+        $(function () {
+            $('.allocateBtn').click(function (e) {
+                swal({
+                    title: "Welcome",
+                    text: "You want to Book this Service?",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true
+                }).then((confirm) => {
+                    if (confirm) {
+                        var btn = $(this);
+                        var id = btn.data("id");
+                        $('#allocateQueueId').val(id);
+                        $('#allocationForm').submit();
+                    }
+                });
+            });
+        });
+    </script>
+}

@@ -1,0 +1,8 @@
+﻿@{   
+    if (User.Identity.Name == "Admin"){
+        Layout = "_AdminLayout";
+    }
+    else{
+        Layout = "_Layout";
+    }
+}

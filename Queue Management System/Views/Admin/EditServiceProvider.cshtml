@@ -1,0 +1,42 @@
+﻿@model Queue_Management_System.Models.ServiceProviderVM
+
+@{
+    ViewData["Title"] = "Edit Service Provider";
+}
+
+<h1>Edit Service Provider</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditServiceProvider">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" disabled/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ServicepointId " class="control-label"></label>
+                <input asp-for="ServicepointId " class="form-control" />
+                <span asp-validation-for="ServicepointId " class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="Role" value="Service Provider" class="form-control" />
+                <input type="hidden" asp-for="Id" value="@Model.Id" class="form-control" />
+            </div>
+            <div class="form-group">
+                <a asp-action="ViewServiceProviders" class="btn btn-dark">Back to List</a> &nbsp;
+                <input type="submit" value="Save Changes" class="btn btn-warning" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

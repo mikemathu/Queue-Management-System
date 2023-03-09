@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="03/03/2023 13:40:02" ReportInfo.Modified="03/05/2023 09:39:06" ReportInfo.CreatorVersion="2023.1.4.0">
+  <Dictionary>
+    <PostgresDataConnection Name="Connection" ConnectionString="rijcmlq8ZkN6qUj4G/zvKvLeJ9DDB6WCp22J48oQEWWvz8/J/Nbc4Hw7dGeDbsvFUOozh+gZDyK3etqvyhJ2Lm8f4Rhwj4bpGW88A8OgCX9bBzuors=">
+      <TableDataSource Name="public_queue" DataType="System.Int32" Enabled="true" TableName="public.&quot;queue&quot;" SelectCommand="SELECT id, servicepointid, createdat  FROM queue ORDER BY ID DESC LIMIT 1;">
+        <Column Name="id" DataType="System.Int32"/>
+        <Column Name="servicepointid" DataType="System.Int32"/>
+        <Column Name="createdat" DataType="System.DateTime"/>
+      </TableDataSource>
+    </PostgresDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="37.8"/>
+    <PageHeaderBand Name="PageHeader1" Top="41.8" Width="718.2" Height="85.05">
+      <TextObject Name="Text2" Left="151.2" Top="28.35" Width="406.35" Height="56.7" Text="Ticket Number" HorzAlign="Center" VertAlign="Center" Font="Arial, 22pt"/>
+    </PageHeaderBand>
+    <DataBand Name="Data1" Top="130.85" Width="718.2" Height="274.05" DataSource="public_queue">
+      <TextObject Name="Text1" Left="151.2" Width="406.35" Height="47.25" Text="[public_queue.id]" HorzAlign="Center" VertAlign="Center" Font="Arial, 22pt"/>
+      <TextObject Name="Text3" Left="151.2" Top="113.4" Width="406.35" Height="66.15" Text="[public_queue.servicepointid]" HorzAlign="Center" VertAlign="Center" Font="Arial, 22pt"/>
+      <TextObject Name="Text4" Left="151.2" Top="47.25" Width="406.35" Height="66.15" Text="Proceed to Room Number" HorzAlign="Center" VertAlign="Center" Font="Arial, 22pt"/>
+      <TextObject Name="Text5" Left="151.2" Top="179.55" Width="406.35" Height="37.8" Text="&#13;&#10;[FormatDateTime([public_queue.createdat],&quot;Long Date&quot;)]" Format="Date" Format.Format="d" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="408.9" Width="718.2" Height="18.9"/>
+  </ReportPage>
+</Report>

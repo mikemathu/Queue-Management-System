@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Queue_Management_System.Models.QueueVM>
+
+@{
+    ViewData["Title"] = "Waiting Page";
+}
+
+@if (@Model == null)
+{
+    <H1 style="padding-top: 50px;" class="text-center">No Customers Waiting</H1>
+}
+else
+{
+    <div style="height: 70vh;">
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </th>
+                    <th>
+                      @Html.DisplayNameFor(model => model.ServicePointId)
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <h1>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </h1>
+                        </td>
+                        <td>
+                            <h2>
+                                ROOM  @Html.DisplayFor(modelItem => item.ServicePointId)
+
+                            </h2>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+

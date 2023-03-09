@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Queue_Management_System</RootNamespace>
+    <Company>Hanmak Technologies Limited</Company>
+    <Authors>Kelvin Kihiu</Authors>
+    <Description>A standalone queue management system with a dedicated kiosk mode.</Description>
+    <PackageProjectUrl>https://github.com/hanmaktechltd/aspnetcore-assignment</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/hanmaktechltd/aspnetcore-assignment</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Repository\**" />
+    <Content Remove="Repository\**" />
+    <EmbeddedResource Remove="Repository\**" />
+    <None Remove="Repository\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\" />
+    <Folder Include="Repositories\" />
+    <Folder Include="Views\Account\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Npgsql" Version="7.0.1" />
+  </ItemGroup>
+
+</Project>

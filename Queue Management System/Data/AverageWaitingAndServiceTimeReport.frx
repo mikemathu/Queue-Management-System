@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="03/03/2023 11:21:34" ReportInfo.Modified="03/05/2023 09:38:36" ReportInfo.CreatorVersion="2023.1.4.0">
+  <ScriptText>using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Windows.Forms;
+using System.Drawing;
+using System.Data;
+using FastReport;
+using FastReport.Data;
+using FastReport.Dialog;
+using FastReport.Barcode;
+using FastReport.Table;
+using FastReport.Utils;
+
+namespace FastReport
+{
+  public class ReportScript
+  {
+ 
+  }
+}
+</ScriptText>
+  <Dictionary>
+    <PostgresDataConnection Name="Connection" ConnectionString="rijcmlq8ZkN6qUj4G/zvKvLeJ9DDB6WCp22J48oQEWWvz8/J/Nbc4Hw7dGeDbsvFUOozh+gZDyK3etqvyhJ2Lm8f4RhwpxohBv+FURVql5XUZi3NwU=">
+      <TableDataSource Name="public_queue" DataType="System.Int32" Enabled="true" TableName="public.&quot;queue&quot;">
+        <Column Name="servicepointid" DataType="System.Int32"/>
+        <Column Name="createdat" DataType="System.DateTime"/>
+        <Column Name="waitingtime" DataType="System.Int32"/>
+        <Column Name="servicetime" DataType="System.Int32"/>
+        <Column Name="id" DataType="System.Int32"/>
+        <Column Name="status" DataType="System.Int32"/>
+        <Column Name="updatedat" DataType="System.TimeSpan"/>
+        <Column Name="completedat" DataType="System.TimeSpan"/>
+      </TableDataSource>
+    </PostgresDataConnection>
+  </Dictionary>
+  <ReportPage Name="Page1" Watermark.Font="Arial, 60pt">
+    <ReportTitleBand Name="ReportTitle1" Width="718.2" Height="47.25"/>
+    <PageHeaderBand Name="PageHeader1" Top="51.25" Width="718.2" Height="28.35"/>
+    <DataBand Name="Data1" Top="83.6" Width="718.2" Height="311.85">
+      <AdvMatrixObject Name="Matrix1" Left="18.9" Top="18.9" Width="623.64" Height="207.9" DataSource="public_queue" Style="Blue">
+        <Columns>
+          <Descriptor DisplayText="Value"/>
+        </Columns>
+        <Rows>
+          <Descriptor Expression="Year([public_queue.createdat])">
+            <Descriptor Expression="MonthName(Month([public_queue.createdat]))" VisibleToggledBy="CollapseButton2" TopN.Total.Visible="false" TopN.OthersTotal.Visible="false">
+              <Descriptor Expression="Day([public_queue.createdat])+ &quot;, &quot; + DayOfWeek([public_queue.createdat]) " VisibleToggledBy="CollapseButton1">
+                <Descriptor Expression="[public_queue.servicepointid]">
+                  <Descriptor DisplayText="Customers Served"/>
+                  <Descriptor DisplayText="Average Waiting Time(Minutes)"/>
+                  <Descriptor DisplayText="Average Service Time(Minutes)"/>
+                </Descriptor>
+              </Descriptor>
+            </Descriptor>
+          </Descriptor>
+        </Rows>
+        <TableColumn Name="Column1" Width="103.94"/>
+        <TableColumn Name="Column2" Width="103.94"/>
+        <TableColumn Name="Column3" Width="103.94"/>
+        <TableColumn Name="Column4" Width="103.94"/>
+        <TableColumn Name="Column5" Width="103.94"/>
+        <TableColumn Name="Column6" Width="103.94"/>
+        <TableRow Name="Row1" Height="37.8">
+          <TableCell Name="Cell1" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="Year" Padding="2, 1, 16, 1" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt">
+            <MatrixSortButton Name="SortButton1" Left="87.94" Width="16" Height="37.8" Dock="Right" SymbolSize="7"/>
+          </TableCell>
+          <TableCell Name="Cell2" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="Month" Padding="2, 1, 16, 1" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt">
+            <MatrixSortButton Name="SortButton2" Left="87.94" Width="16" Height="37.8" Dock="Right" SymbolSize="7"/>
+          </TableCell>
+          <TableCell Name="Cell5" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="Day" Padding="2, 1, 16, 1" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt">
+            <MatrixSortButton Name="SortButton3" Left="87.94" Width="16" Height="37.8" Dock="Right" SymbolSize="7"/>
+          </TableCell>
+          <TableCell Name="Cell7" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="Service Point Id" Padding="2, 1, 16, 1" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt">
+            <MatrixSortButton Name="SortButton4" Left="87.94" Width="16" Height="37.8" Dock="Right" SymbolSize="7"/>
+          </TableCell>
+          <TableCell Name="Cell9" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="Value" Padding="2, 1, 16, 1" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+          <TableCell Name="Cell11" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="Value" Padding="2, 1, 16, 1" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt">
+            <MatrixSortButton Name="SortButton5" Left="87.94" Width="16" Height="37.8" Dock="Right" SymbolSize="7"/>
+          </TableCell>
+        </TableRow>
+        <TableRow Name="Row2" Height="47.25">
+          <TableCell Name="Cell3" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="Year([public_queue.createdat])" Padding="16, 1, 2, 1" AllowExpressions="false" Format="Date" Format.Format="d" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt" RowSpan="3">
+            <MatrixCollapseButton Name="CollapseButton2" Width="16" Height="170.1" Dock="Left" SymbolSize="5"/>
+          </TableCell>
+          <TableCell Name="Cell4" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="MonthName(Month([public_queue.createdat]))" Padding="16, 1, 2, 1" AllowExpressions="false" Format="Date" Format.Format="d" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt" RowSpan="3">
+            <MatrixCollapseButton Name="CollapseButton1" Width="16" Height="170.1" Dock="Left" SymbolSize="5"/>
+          </TableCell>
+          <TableCell Name="Cell6" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="Day([public_queue.createdat])+ &quot;, &quot; + DayOfWeek([public_queue.createdat]) " AllowExpressions="false" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt" RowSpan="3"/>
+          <TableCell Name="Cell8" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="[public_queue.servicepointid]" AllowExpressions="false" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt" RowSpan="3"/>
+          <TableCell Name="Cell10" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="Customers Served" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+          <TableCell Name="Cell12" Border.Lines="All" Border.Color="White" Fill.Color="186, 211, 254" Text="[Count([public_queue.servicepointid])]&#13;&#10;" AllowExpressions="false" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row3" Height="56.7">
+          <TableCell Name="Cell13" Font="Arial, 10pt"/>
+          <TableCell Name="Cell14" Font="Arial, 10pt"/>
+          <TableCell Name="Cell15" Font="Arial, 10pt"/>
+          <TableCell Name="Cell16" Font="Arial, 10pt"/>
+          <TableCell Name="Cell17" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="Average Waiting Time(Minutes)" AllowExpressions="false" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+          <TableCell Name="Cell18" Border.Lines="All" Border.Color="White" Fill.Color="186, 211, 254" BeforePrintEvent="Cell18_BeforePrint" Text="[Avg([public_queue.waitingtime])]" AllowExpressions="false" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt"/>
+        </TableRow>
+        <TableRow Name="Row4" Height="66.15">
+          <TableCell Name="Cell19" Font="Arial, 10pt"/>
+          <TableCell Name="Cell20" Font="Arial, 10pt"/>
+          <TableCell Name="Cell21" Font="Arial, 10pt"/>
+          <TableCell Name="Cell22" Font="Arial, 10pt"/>
+          <TableCell Name="Cell23" Border.Lines="All" Border.Color="White" Fill.Color="151, 189, 253" Text="Average Service Time(Minutes)" HorzAlign="Center" VertAlign="Center" Font="Arial, 10pt"/>
+          <TableCell Name="Cell24" Border.Lines="All" Border.Color="White" Fill.Color="186, 211, 254" BeforePrintEvent="Cell18_BeforePrint" Text="[Avg([public_queue.servicetime])]" AllowExpressions="false" HorzAlign="Right" VertAlign="Center" Font="Arial, 10pt"/>
+        </TableRow>
+      </AdvMatrixObject>
+    </DataBand>
+    <PageFooterBand Name="PageFooter1" Top="399.45" Width="718.2" Height="56.7"/>
+  </ReportPage>
+</Report>
