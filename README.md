@@ -11,7 +11,7 @@
 
 This system has the following pages:
 
-1. Check-In page. This page allows customers to select the kind of service they're receiving and support kiosk mode with the following which has:
+1. Check-In page. This page allows customers to select the kind of service they're receiving and support kiosk mode which has:
    - Descriptive text.
    - Large enough buttons.
    - TODO: Ability to print tickets. Designed using FastReport.Net.
