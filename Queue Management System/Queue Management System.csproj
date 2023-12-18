@@ -10,6 +10,7 @@
     <Description>A standalone queue management system with a dedicated kiosk mode.</Description>
     <PackageProjectUrl>https://github.com/hanmaktechltd/aspnetcore-assignment</PackageProjectUrl>
     <RepositoryUrl>https://github.com/hanmaktechltd/aspnetcore-assignment</RepositoryUrl>
+    <UserSecretsId>ab9b9cb0-df2e-482c-922b-b79fe524d1dc</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
